@@ -135,7 +135,52 @@ Exemplo:
 
 ---
 
-## 7. Referências (≥3, ≥1 acadêmica)
+## 7. Testes ALÉM do código (manual, beta, comunidade)
+
+Knott (2014) defende que **40% da pirâmide mobile é manual/exploratório**. Olhar só `.github/workflows/` perde isso. Investigue também:
+
+### Onde olhar evidências de teste manual/estratégico
+
+| Sinal | Onde olhar |
+|---|---|
+| **Processo QA documentado** | `CONTRIBUTING.md`, `docs/`, `wiki/`, `TESTING.md` |
+| **Charters / SBTM** (Session-Based Test Management) | Issues com labels `qa`, `exploratory`, sessões timeboxed |
+| **Beta testing program** | README menciona TestFlight, Firebase App Distribution, Play Store Internal Track |
+| **Bug bash / bug bounty** | `SECURITY.md`, programa público de bug bounty |
+| **Issues abertas** | Aba **Issues** do GitHub — quem reporta, como é triado, label distribution |
+| **Real device farm** | README/CI menciona BrowserStack, LambdaTest, Firebase Test Lab, Sauce Labs |
+| **Reviews da loja** | Play Store / App Store reviews — sinal de feedback usuário real |
+| **Crash reporting** | Menção a Sentry, Crashlytics, Bugsnag (telemetria de produção = "teste em produção") |
+
+### Como detectar (passo a passo)
+
+1. **Abrir `CONTRIBUTING.md`** → procurar seção tipo "How to test", "QA process", "Reviewing PRs"
+2. **Abrir aba Issues** → filtrar por label `bug`, `qa`, `test`, `flaky` — ver volume e como são triados
+3. **Procurar pasta `docs/`** → muitos repos têm wiki interna com test plans
+4. **Abrir Play/App Store** → instala o app, lê reviews recentes — feedback "isso quebrou", "lento", "crash" indica testes manuais que faltam
+5. **Procurar mention de cloud farm** em `.github/workflows/` (`firebase-test-lab`, `browserstack`)
+
+### Sinais de **maturidade** em testing strategy
+
+- ✅ **CONTRIBUTING.md descreve teste manual** antes de PR merge
+- ✅ **Beta program ativo** (TestFlight build atualizado, Play Internal Track)
+- ✅ **Issues bem triadas** (labels, milestones, response time razoável)
+- ✅ **Bug bounty / SECURITY.md** com processo claro
+- ⚠️ **CI verde mas reviews da loja cheias de crash** = teste automatizado não captura realidade
+- ❌ **Sem CONTRIBUTING / SECURITY / docs/** = depende de tribal knowledge
+
+### Exemplo prático
+
+App pode ter:
+- ✅ 80% cobertura unit
+- ✅ Maestro E2E rodando em PR
+- ❌ Zero menção a accessibility manual / beta testing / exploratory charters
+
+→ Conclusão: **estratégia automatizada madura, manual ausente** — gap real.
+
+---
+
+## 8. Referências (≥3, ≥1 acadêmica)
 
 ### O que é fonte acadêmica
 

@@ -58,6 +58,22 @@
 
 **Detalhe:** [Ex: "Script `test:coverage` existe no `package.json` mas não é invocado em nenhum workflow — cobertura só local."]
 
+### 1.5 Testes ALÉM do código (manual, beta, comunidade)
+
+> Knott (2014): 40% da pirâmide mobile é exploratório/manual. Olhar só CI perde essa metade.
+
+| Aspecto | Existe evidência? | Onde / Detalhe |
+|---|---|---|
+| `CONTRIBUTING.md` descreve processo de teste | [Sim/Não] | [path / quote] |
+| Beta program (TestFlight / Firebase / Play Internal) | [Sim/Não] | [link ou —] |
+| Bug bounty / `SECURITY.md` | [Sim/Não] | [link ou —] |
+| Issues bem triadas (labels QA, response time) | [Sim/Não] | [observação qualitativa] |
+| Cloud device farm (Firebase Test Lab / BrowserStack / etc.) | [Sim/Não] | [path workflow ou README] |
+| Crash reporting / telemetria | [Sim/Não] | [Sentry / Crashlytics / outro] |
+| Reviews recente Play/App Store | [Resumo qualitativo] | [crashes? lentidão? UX feedback?] |
+
+**Resumo:** [1-3 frases sobre maturidade da estratégia além-do-código. Ex: "Estratégia automatizada robusta mas sem evidência de teste manual estruturado ou beta program."]
+
 ---
 
 ## 2. Análise de gaps
