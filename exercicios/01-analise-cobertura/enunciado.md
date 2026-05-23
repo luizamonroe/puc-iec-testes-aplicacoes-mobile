@@ -11,7 +11,7 @@
 
 QA mobile falha por falta de estratégia consciente. Você vai escolher um app mobile open source real, descobrir **o que ele testa e o que não testa**, e propor melhoria. Treino básico de auditor.
 
-> **Versão simplificada desta oferta** — focada em entregável de 1-2 páginas. Se quiser ir mais fundo, o `template-relatorio.md` tem seções bonus opcionais.
+> **Versão simplificada desta oferta** — focada em entregável de 1-2 páginas. Se quiser ir mais fundo, o [template-relatorio.md](https://github.com/jacksonsmith/puc-iec-testes-aplicacoes-mobile/blob/main/exercicios/01-analise-cobertura/template-relatorio.md) tem seções bonus opcionais.
 
 ## Tarefa (3 passos)
 
@@ -39,7 +39,7 @@ Abre o repo no GitHub e responde — pode usar **IA assistida (Gemini CLI, Curso
 | **Que ferramentas usam?** | `build.gradle`, `package.json`, `pubspec.yaml`, `Project.xcodeproj` |
 | **Tem CI/CD?** | `.github/workflows/*.yml` — quais workflows, rodam em PR ou nightly |
 
-Veja o **`guia-investigacao.md`** se ficar perdido — passo a passo de onde olhar.
+Veja o **[guia-investigacao.md](https://github.com/jacksonsmith/puc-iec-testes-aplicacoes-mobile/blob/main/exercicios/01-analise-cobertura/guia-investigacao.md)** se ficar perdido — passo a passo de onde olhar.
 
 ### 3. Análise + proposta (~1h)
 
@@ -100,7 +100,7 @@ Prompts úteis:
 
 - Formato: **markdown** (`.md`) ou PDF gerado de markdown
 - Tamanho: **1-2 páginas** (não precisa ser longo — direto ao ponto)
-- Estrutura: copiar `template-relatorio.md` e preencher
+- Estrutura: copiar [template-relatorio.md](https://github.com/jacksonsmith/puc-iec-testes-aplicacoes-mobile/blob/main/exercicios/01-analise-cobertura/template-relatorio.md) e preencher
 - Submeter via Canvas (módulo Atividade 1) com link do commit GitHub
 - **Como entregar via GitHub:** ver página "Como entregar atividades pelo GitHub" no módulo Início
 
@@ -112,8 +112,13 @@ Prompts úteis:
 - **Você é um auditor** — investigar a partir do que está visível
 - Não precisa matriz quantitativa, paper acadêmico, ou análise exaustiva (deixar pra próximas atividades)
 
-## Material de apoio
+## Material de apoio (todos no GitHub público da disciplina)
 
-- `guia-investigacao.md` — passo a passo de **onde olhar** pra descobrir cada coisa
-- `template-relatorio.md` — preencha esse, é sua entrega
-- Material de apoio aula 1 (Fowler, Knott — disponíveis na página *Leitura Obrigatória* do módulo)
+- **Guia de investigação** — passo a passo de onde olhar:
+  <https://github.com/jacksonsmith/puc-iec-testes-aplicacoes-mobile/blob/main/exercicios/01-analise-cobertura/guia-investigacao.md>
+- **Template do relatório** — preencha esse, é sua entrega:
+  <https://github.com/jacksonsmith/puc-iec-testes-aplicacoes-mobile/blob/main/exercicios/01-analise-cobertura/template-relatorio.md>
+- **PDFs aula 1** (Fowler, Knott, Linares-Vásquez, Google Testing, ISTQB):
+  <https://github.com/jacksonsmith/puc-iec-testes-aplicacoes-mobile/tree/main/material-de-apoio/aula-01>
+- **Slide aula 1**:
+  <https://github.com/jacksonsmith/puc-iec-testes-aplicacoes-mobile/blob/main/slides/aula-01/aula-01-fundamentos-mobile-testing.pdf>
