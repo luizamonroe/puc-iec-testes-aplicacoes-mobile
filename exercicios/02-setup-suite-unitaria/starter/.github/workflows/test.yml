@@ -26,10 +26,10 @@ jobs:
           TESTS_PASSED=$(jq '.numPassedTests' results.json)
           TESTS_TOTAL=$(jq '.numTotalTests' results.json)
           echo "✅ Passou: $TESTS_PASSED / $TESTS_TOTAL"
-          MIN_REQUIRED=12
+          MIN_REQUIRED=14
           if [ "$TESTS_PASSED" -lt "$MIN_REQUIRED" ]; then
             echo "❌ Mínimo $MIN_REQUIRED testes verdes obrigatório (encontrado: $TESTS_PASSED)"
-            echo "   Esperado: favoritesStore (6) + counterStore (3) + isTokenError (5)"
+            echo "   Esperado: favoritesStore (6) + MovieCard RNTL (2) + isTokenError (5) + counterStore (3)"
             exit 1
           fi
           echo "✅ Atende mínimo de $MIN_REQUIRED testes"

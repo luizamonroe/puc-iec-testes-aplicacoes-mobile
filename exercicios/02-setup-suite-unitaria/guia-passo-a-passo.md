@@ -87,7 +87,39 @@ it('false pra null', () => {
 
 ---
 
-## 5. Cobertura
+## 5. Teste de tela — RNTL (`MovieCard.test.tsx`) ⭐
+
+O teste mais "cara de QA": valida o que o usuário **vê** e **faz**. MovieCard usa `useNavigation()` → mocke o hook (não há `NavigationContainer` no teste).
+
+```typescript
+import { render, screen, fireEvent } from '@testing-library/react-native';
+import MovieCard from '../src/components/MovieCard';
+
+const mockNavigate = jest.fn();
+jest.mock('@react-navigation/native', () => ({
+  useNavigation: () => ({ navigate: mockNavigate }),
+}));
+
+const movie = { id: 42, title: 'Matrix', poster_path: '/m.jpg', vote_average: 8.7 };
+
+it('mostra título e nota', () => {
+  render(<MovieCard movie={movie} />);
+  expect(screen.getByText('Matrix')).toBeTruthy();
+  expect(screen.getByText('⭐ 8.7')).toBeTruthy();
+});
+
+it('navega pro detalhe ao tocar', () => {
+  render(<MovieCard movie={movie} />);
+  fireEvent.press(screen.getByText('Matrix'));
+  expect(mockNavigate).toHaveBeenCalledWith('Detail', { id: 42, title: 'Matrix' });
+});
+```
+
+`screen.getByText` = o que aparece · `fireEvent.press` = o toque.
+
+---
+
+## 6. Cobertura
 
 ```bash
 npm run test:coverage
@@ -98,7 +130,7 @@ Meta: **≥ 70%** em `src/store` e `src/utils`. Vermelho no relatório = linha n
 
 ---
 
-## 6. Bônus — mock de dependência (`popularMovies.test.ts`)
+## 7. Bônus — mock de dependência (`popularMovies.test.ts`)
 
 ```typescript
 import { fetchPopularMovies } from '../src/queries/movies/get-popular-movies';
@@ -124,8 +156,8 @@ it('chama /movie/popular e devolve data', async () => {
 | `Cannot find module 'zustand'` | esqueceu `npm install` | rode `npm install` |
 | testes passam isolados, falham juntos | store não resetada | `setState` no `beforeEach` |
 | cobertura 100% mas "não testei nada" | teste sem `expect` | todo `it` precisa de ao menos 1 assert |
-| `Cannot read 'constructor'` ao renderizar componente | jest-expo 54 + React 19 + `<Image>` | **não teste componente** nesta atividade (escopo é unit puro) |
-| Node version errada | RN precisa Node 22 | `nvm use 22` |
+| `Couldn't find a navigation object` no MovieCard | faltou mockar `useNavigation` | adicione o `jest.mock('@react-navigation/native', ...)` |
+| `npm install` falha / pacote não encontrado | registry errado | o `.npmrc` do projeto já aponta pro npm público; rode na raiz do `starter` |
 
 ---
 

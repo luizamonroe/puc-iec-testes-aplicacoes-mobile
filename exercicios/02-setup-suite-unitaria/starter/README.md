@@ -12,27 +12,30 @@ App Expo + TypeScript **já implementado e funcionando**. Mesmo app que a turma 
 
 | Arquivo | O que tem | Tipo de teste |
 |---|---|---|
-| `src/utils/poster-url.ts` | `posterUrl(path, size)` — monta URL do poster | função pura (Jest) |
+| Arquivo | O que tem | Tipo de teste |
+|---|---|---|
+| `src/components/MovieCard.tsx` | card de filme (título, nota, toque) | **teste de tela (RNTL)** ⭐ |
 | `src/store/favoritesStore.ts` | Zustand: `add/remove/toggle/clear/isFavorite` | store (Jest) |
-| `src/store/counterStore.ts` | Zustand: `increment/decrement/reset` | store (Jest) |
 | `src/services/api.ts` | `isTokenError(err)` — classifica erro de auth | função pura (Jest) |
-| `src/queries/movies/get-popular-movies.ts` | `fetchPopularMovies(page)` — fetch da API | mock de dependência (jest.mock) — **bônus** |
+| `src/store/counterStore.ts` | Zustand: `increment/decrement/reset` | store (Jest) |
+| `src/utils/poster-url.ts` | `posterUrl(path, size)` — monta URL do poster | função pura (Jest) — modelo |
+| `src/queries/movies/get-popular-movies.ts` | `fetchPopularMovies(page)` | mock de dependência — **bônus** |
 
 ```
 src/
-├── services/api.ts        ← HTTP (axios) + isTokenError
-├── queries/movies/        ← TanStack Query
-├── store/                 ← Zustand (counter, favorites)  ← alvo principal
-├── screens/  components/   ← UI
-├── types/movie.ts
-└── utils/poster-url.ts    ← função pura — comece por aqui
+├── components/MovieCard.tsx  ← teste de tela (RNTL) ⭐
+├── store/                    ← Zustand (favorites, counter)
+├── services/api.ts           ← isTokenError
+├── queries/movies/           ← TanStack Query (bônus)
+└── utils/poster-url.ts       ← função pura — modelo resolvido
 
-__tests__/                 ← SUA ENTREGA (Jest + RNTL)
-├── posterUrl.test.ts       ← EXEMPLO RESOLVIDO (modelo)
-├── favoritesStore.test.ts  ← it.todo — preencha
-├── counterStore.test.ts    ← it.todo — preencha
-├── api.test.ts             ← it.todo — preencha
-└── popularMovies.test.ts   ← it.todo — bônus (mock da api)
+__tests__/                    ← SUA ENTREGA (Jest + RNTL)
+├── posterUrl.test.ts          ← EXEMPLO RESOLVIDO (modelo)
+├── MovieCard.test.tsx         ← it.todo — teste de tela ⭐
+├── favoritesStore.test.ts     ← it.todo
+├── counterStore.test.ts       ← it.todo
+├── api.test.ts                ← it.todo
+└── popularMovies.test.ts      ← it.todo — bônus (mock da api)
 ```
 
 ---
@@ -46,8 +49,9 @@ npm install
 npm test          # posterUrl já passa verde (3 testes); o resto é it.todo
 ```
 
-> **Unit test não precisa de simulador, token nem rede.** Roda só com Node.
+> **Os testes (incl. RNTL de tela) não precisam de simulador, token nem rede.** Rodam só com Node.
 > O app só roda de verdade (`npx expo start`) se você gerar um token TMDB — opcional pra esta atividade.
+> **Stack:** Expo SDK 52 (RN 0.76 + React 18.3). O `.npmrc` do projeto já aponta pro **npm público** — não precisa de registry de empresa.
 
 ```bash
 npm test               # roda a suíte
@@ -63,10 +67,11 @@ npm run test:coverage  # relatório de cobertura (abre coverage/lcov-report/inde
 |---|---|---|
 | TASK 1 | `__tests__/posterUrl.test.ts` | Leia — é o **modelo resolvido** |
 | TASK 2 | `__tests__/favoritesStore.test.ts` | Escreva 6 testes (add/remove/toggle/isFavorite/clear) |
-| TASK 3 | `__tests__/counterStore.test.ts` | Escreva 3 testes (increment/decrement/reset) |
+| TASK 3 ⭐ | `__tests__/MovieCard.test.tsx` | **Teste de tela (RNTL):** render título/nota + `press` navega |
 | TASK 4 | `__tests__/api.test.ts` | Escreva 5 testes de `isTokenError` |
-| TASK 5 | — | Atinja **cobertura ≥ 70%** em `src/store` e `src/utils` |
-| TASK 6 (bônus) | `__tests__/popularMovies.test.ts` | `fetchPopularMovies` com `jest.mock('@/services/api')` |
+| TASK 5 | `__tests__/counterStore.test.ts` | Escreva 3 testes (increment/decrement/reset) |
+| TASK 6 | — | Atinja **cobertura ≥ 70%** em `src/store` e `src/utils` |
+| TASK 7 (bônus) | `__tests__/popularMovies.test.ts` | `fetchPopularMovies` com `jest.mock('@/services/api')` |
 
 ```bash
 grep -rn "it.todo\|TODO \[TASK" __tests__/   # ver o que falta

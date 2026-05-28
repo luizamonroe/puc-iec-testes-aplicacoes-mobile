@@ -46,11 +46,20 @@ Store em `src/store/favoritesStore.ts`. Cubra:
 
 > Store é singleton — resete entre testes com `useFavoritesStore.setState({ ids: [] })` no `beforeEach` (já está no scaffold). Acesse com `useFavoritesStore.getState()`.
 
-### 2. `counterStore.test.ts` — Zustand (3 testes)
+### 2. `MovieCard.test.tsx` — teste de tela (RNTL) ⭐
+
+Componente em `src/components/MovieCard.tsx`. É o teste mais "cara de QA" — valida o que o usuário **vê** e **faz**:
+- renderiza o **título** do filme (`screen.getByText`)
+- renderiza a **nota** (`⭐ 8.7`)
+- **toque no card navega** pro detalhe (`fireEvent.press` → `navigate` chamado)
+
+> MovieCard usa `useNavigation()` — mocke o hook (não há `NavigationContainer` no teste). O scaffold já traz o mock pronto.
+
+### 3. `counterStore.test.ts` — Zustand (3 testes)
 
 `increment` soma 1 · `decrement` subtrai 1 · `reset` zera.
 
-### 3. `api.test.ts` — função pura da camada data (5 testes)
+### 4. `api.test.ts` — função pura da camada data (5 testes)
 
 `isTokenError(err)` em `src/services/api.ts`:
 - `true` pra `response.status === 401`
@@ -59,7 +68,7 @@ Store em `src/store/favoritesStore.ts`. Cubra:
 - `false` pra `null`
 - `false` pra erro genérico (status 500)
 
-### 4. Cobertura ≥ 70% em `src/store` e `src/utils`
+### 5. Cobertura ≥ 70% em `src/store` e `src/utils`
 
 ```bash
 npm run test:coverage
@@ -73,10 +82,11 @@ npm run test:coverage
 | Critério | Pontos |
 |---|---|
 | `npm install && npm test` roda em < 15min (eliminatório) | 2 |
-| Testes `favoritesStore` (6 verdes) | 3 |
-| Testes `counterStore` (3 verdes) | 1 |
+| Testes `favoritesStore` (6 verdes) | 2 |
+| **Teste de tela `MovieCard` (RNTL)** — render + press navega | 2 |
 | Testes `isTokenError` (5 verdes) | 2 |
-| Cobertura ≥ 70% em `src/store` e `src/utils` | 2 |
+| Testes `counterStore` (3 verdes) | 1 |
+| Cobertura ≥ 70% em `src/store` e `src/utils` | 1 |
 
 **Total: 10 pts**
 
@@ -108,8 +118,8 @@ npm run test:coverage
 ## O que você NÃO precisa fazer
 
 - **Não implementa feature** — o código de produção já está pronto
-- **Não precisa rodar o app** (sem token/simulador) — só os testes
-- **Não precisa testar componentes/UI** (RNTL/E2E vem nas Aulas 3–4 com Detox/Maestro)
+- **Não precisa rodar o app** (sem token/simulador) — testes (incl. RNTL) rodam só com Node
+- **Não precisa E2E** (app rodando ponta a ponta) — isso é Aula 3 (Detox/Maestro)
 
 ## Material de apoio (todos no GitHub público)
 

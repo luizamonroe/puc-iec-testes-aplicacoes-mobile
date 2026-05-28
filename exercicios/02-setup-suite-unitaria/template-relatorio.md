@@ -38,8 +38,9 @@ npm run test:coverage
 | Arquivo | Casos | O que cobre |
 |---|---|---|
 | `favoritesStore.test.ts` | 6 | add / add-sem-duplicar / remove / toggle / isFavorite / clear |
-| `counterStore.test.ts` | 3 | increment / decrement / reset |
+| `MovieCard.test.tsx` | 2+ | render título/nota · toque navega (RNTL) |
 | `api.test.ts` | 5 | isTokenError: 401, flag, missing, null, 500 |
+| `counterStore.test.ts` | 3 | increment / decrement / reset |
 
 ## Decisões de teste
 
