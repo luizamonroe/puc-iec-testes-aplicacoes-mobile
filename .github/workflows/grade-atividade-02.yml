@@ -84,15 +84,9 @@ jobs:
                 issue_number: context.issue.number,
                 owner: context.repo.owner,
                 repo: context.repo.repo,
-                body: `## 🤖 J.A.R.V.I.S. — *autograder do Prof. Jackson*
-
-` +
-                  `> *Just A Rather Very Intelligent System* — bot que roda as regras de avaliação automatizada do prof nos PRs de exercício.
-
-` +
-                  `**Atividade 2 (Suíte Unitária RN)**
-
-` +
+                body: `## 🤖 J.A.R.V.I.S. — *autograder do Prof. Jackson*\n\n` +
+                  `> *Just A Rather Very Intelligent System* — bot que roda as regras de avaliação automatizada do prof nos PRs de exercício.\n\n` +
+                  `**Atividade 2 (Suíte Unitária RN)**\n\n` +
                   `❌ Não consegui avaliar a entrega em \`${entrega}\`. Confira se há \`package.json\` + arquivos de teste.`,
               });
               return;
@@ -100,8 +94,7 @@ jobs:
             const grade = JSON.parse(fs.readFileSync(path, 'utf8'));
             const lines = (grade.criteria || [])
               .map(c => `- ${c.earned >= c.weight ? '✅' : c.earned > 0 ? '🟡' : '⬜'} ${c.description} — ${c.publicNote || ''} (${c.earned}/${c.weight})`)
-              .join('
-');
+              .join('\n');
             const body = [
               `## 🤖 J.A.R.V.I.S. — *autograder do Prof. Jackson*`,
               ``,
@@ -110,8 +103,7 @@ jobs:
               `**Atividade 2 (Suíte Unitária RN)** — entrega: \`${entrega}\``,
               ``,
               `**Status:** ${grade.pass ? '✅ Critérios mínimos automatizados atendidos' : '⚠️ Revisão manual necessária'}`,
-              lines ? `
-${lines}` : '',
+              lines ? `\n${lines}` : '',
               ``,
               `Avaliação automatizada parcial. A **pontuação final** será lançada por mim (Prof. Jackson) **no Canvas** após revisão manual.`,
               ``,
@@ -120,8 +112,7 @@ ${lines}` : '',
               `Cole o vídeo ou link (Loom/YouTube unlisted) na descrição deste PR.`,
               ``,
               `_Dúvidas? **Teams da turma** ou jackson.96@gmail.com._`,
-            ].join('
-');
+            ].join('\n');
             await github.rest.issues.createComment({
               issue_number: context.issue.number,
               owner: context.repo.owner,
