@@ -1,8 +1,8 @@
 // __tests__/integration/03-movieFlow.integration.test.tsx
 //
-// ✅ AVALIATIVO — Atividade 2 · Parte B · ENTREGA (5 pts · entrega 21/06)
-//    Começa no HANDS-ON da aula (juntos) → você TERMINA em casa (sozinho).
-//    É ESTE arquivo que conta nota na Parte B (os outros 2 da pasta são prática).
+// ✅ AVALIATIVO — ENTREGA da Parte B (conta nota). Faça TODOS os it() — todos contam.
+//    É ESTE o arquivo da Parte B; os outros 2 da pasta são prática (não contam).
+//    Marca por it(): 🧑‍🏫 = a gente faz junto em aula · 🧑‍💻 = o aluno faz sozinho.
 //
 // Testa o FLUXO entre componentes da versão implementada (src/integration/):
 // a lista busca dados (API mockada) e favoritar um card reflete no contador
@@ -58,12 +58,12 @@ beforeEach(() => {
 });
 
 describe('Fluxo de integração — lista + favoritos (ENTREGA Parte B)', () => {
-  // 2 pts — render(renderApp()); depois findByText de 'Matrix' e 'Inception'.
-  it.todo('1. exibe a lista de filmes retornada pela API mockada');
+  // render(renderApp()); depois findByText de 'Matrix' e 'Inception'.
+  it.todo('1. exibe a lista de filmes retornada pela API mockada');   // 🧑‍🏫 em aula
 
-  // 2 pts — após carregar, contador começa em '0'; press no heart-1 → '1'.
-  it.todo('2. favoritar um card incrementa o contador do header (♥ 1)');
+  // após carregar, contador começa em '0'; press no heart-1 → '1'.
+  it.todo('2. favoritar um card incrementa o contador do header (♥ 1)');   // 🧑‍💻 aluno
 
-  // 1 pt — favoritar e depois desfavoritar o mesmo card → contador volta a '0'.
-  it.todo('3. desfavoritar volta o contador a 0');
+  // favoritar e depois desfavoritar o mesmo card → contador volta a '0'.
+  it.todo('3. desfavoritar volta o contador a 0');   // 🧑‍💻 aluno
 });

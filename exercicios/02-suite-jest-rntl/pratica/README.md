@@ -2,16 +2,17 @@
 
 App Expo + TypeScript **já implementado e funcionando**. Mesmo app que a turma de Arquitetura constrói — aqui o foco é o oposto: **escrever a suíte de testes** sobre código que já existe.
 
-> Os 2 hands-on da Aula 3 (Bloco 1 unit · Bloco 2 integração) começam **juntos em aula**. A **Atividade 2 (entrega 21/06, 15 pts)** é o término deles, que você faz em casa:
-> **Parte A — Suíte Unitária (10 pts)** + **Parte B — Integração (5 pts)**.
+> A Atividade 2 tem **Parte A — Suíte Unitária** + **Parte B — Integração**. **Prazo e pontuação: ver o `enunciado.md`** (mudam a cada turma).
 
 **Você NÃO implementa features.** Stores, services, utils e as telas de integração já estão prontos. Sua entrega são os testes em `__tests__/`.
 
 > **Legenda do cabeçalho de cada arquivo de teste** (lá em cima, no comentário):
 > - 📘 **MODELO RESOLVIDO** — já vem pronto, é só estudar/copiar o estilo (não é entrega)
-> - ✅ **AVALIATIVO** — **conta nota** · começa no hands-on da aula, você **termina sozinho em casa**
-> - 🔵 **PRÁTICA** — hands-on de aquecimento, **não conta nota**
-> - ⭐ **BÔNUS** — opcional, pra arredondar
+> - ✅ **AVALIATIVO** — **conta nota**: faça **todos** os `it()` do arquivo (todos contam)
+> - 🔵 **PRÁTICA** — aquecimento, **não conta nota**
+> - ⭐ **BÔNUS** — opcional, pontos extras
+>
+> Dentro de cada arquivo, o `it()` traz **🧑‍🏫** (a gente faz junto em aula) ou **🧑‍💻** (você faz sozinho) — mas, num arquivo ✅, **todo `it()` conta nota** (faça os 🧑‍🏫 também).
 
 ---
 

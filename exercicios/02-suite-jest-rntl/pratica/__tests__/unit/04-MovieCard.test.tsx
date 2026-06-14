@@ -1,7 +1,7 @@
 // __tests__/unit/04-MovieCard.test.tsx
 //
-// ✅ AVALIATIVO — Atividade 2 · Parte A (conta nota · entrega 21/06)
-//    Começa no HANDS-ON da aula (juntos) → você TERMINA em casa (sozinho).
+// ✅ AVALIATIVO — o aluno entrega isto (conta nota). Faça TODOS os it() — todos contam.
+//    Marca por it(): 🧑‍🏫 = a gente faz junto em aula · 🧑‍💻 = o aluno faz sozinho.
 //
 // TESTE DE TELA (React Native Testing Library) — o coração do QA mobile.
 // Testa o que o USUÁRIO vê e faz, não a implementação.
@@ -36,12 +36,12 @@ beforeEach(() => mockNavigate.mockClear());
 
 describe('MovieCard', () => {
   // Dica: depois do render → expect(screen.getByText('Matrix')).toBeTruthy();
-  it.todo('1. renderiza o título do filme');
+  it.todo('1. renderiza o título do filme');   // 🧑‍🏫 em aula
 
   // Dica: a nota aparece como '⭐ 8.7' (vote_average.toFixed(1)) → screen.getByText('⭐ 8.7').
-  it.todo('2. renderiza a nota (⭐ 8.7)');
+  it.todo('2. renderiza a nota (⭐ 8.7)');   // 🧑‍💻 aluno
 
   // Dica: fireEvent.press(screen.getByText('Matrix'));
   //   expect(mockNavigate).toHaveBeenCalledWith('Detail', { id: 42, title: 'Matrix' });
-  it.todo('3. navega pro detalhe ao tocar no card');
+  it.todo('3. navega pro detalhe ao tocar no card');   // 🧑‍💻 aluno
 });

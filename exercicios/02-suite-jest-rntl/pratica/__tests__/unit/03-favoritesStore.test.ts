@@ -1,7 +1,7 @@
 // __tests__/unit/03-favoritesStore.test.ts
 //
-// ✅ AVALIATIVO — Atividade 2 · Parte A (conta nota · entrega 21/06)
-//    Começa no HANDS-ON da aula (juntos) → você TERMINA em casa (sozinho).
+// ✅ AVALIATIVO — o aluno entrega isto (conta nota). Faça TODOS os it() — todos contam.
+//    Marca por it(): 🧑‍🏫 = a gente faz junto em aula · 🧑‍💻 = o aluno faz sozinho.
 //
 // Escreva os testes da favoritesStore.
 //
@@ -26,14 +26,14 @@ const s = () => useFavoritesStore.getState();
 // 🔴 DESAFIOS (5-6): ainda it.todo — escreva o teste inteiro a partir da dica.
 
 describe('favoritesStore', () => {
-  it('1. add(id) adiciona o id à lista', () => {
+  it('1. add(id) adiciona o id à lista', () => {   // 🧑‍🏫 em aula
     // Act
     s().add(1);
     // Assert — complete:
     expect(s().ids).toEqual(/* TODO: qual array? */);
   });
 
-  it('2. remove(id) tira o id da lista', () => {
+  it('2. remove(id) tira o id da lista', () => {   // 🧑‍🏫 em aula
     // Arrange
     s().add(1);
     // Act
@@ -42,7 +42,7 @@ describe('favoritesStore', () => {
     expect(s().ids).toEqual(/* TODO */);
   });
 
-  it('3. isFavorite(id) reflete o estado atual', () => {
+  it('3. isFavorite(id) reflete o estado atual', () => {   // 🧑‍💻 aluno
     // Arrange
     s().add(1);
     // Assert — complete (true ou false?):
@@ -50,7 +50,7 @@ describe('favoritesStore', () => {
     expect(s().isFavorite(99)).toBe(/* TODO */);
   });
 
-  it('4. clear() esvazia a lista', () => {
+  it('4. clear() esvazia a lista', () => {   // 🧑‍💻 aluno
     // Arrange
     s().add(1);
     s().add(2);
@@ -62,9 +62,9 @@ describe('favoritesStore', () => {
 
   // 🔴 DESAFIO: chamar add(1) DUAS vezes não pode duplicar (ids continua [1]).
   //    Escreva Act + Assert do zero.
-  it.todo('5. add(id) não duplica id já existente');
+  it.todo('5. add(id) não duplica id já existente');   // 🧑‍💻 aluno
 
   // 🔴 DESAFIO: toggle(1) na lista vazia ADICIONA; chamar toggle(1) de novo REMOVE.
   //    Faça as 2 verificações (após o 1º toggle = [1]; após o 2º = []).
-  it.todo('6. toggle(id) adiciona se ausente e remove se presente');
+  it.todo('6. toggle(id) adiciona se ausente e remove se presente');   // 🧑‍💻 aluno
 });

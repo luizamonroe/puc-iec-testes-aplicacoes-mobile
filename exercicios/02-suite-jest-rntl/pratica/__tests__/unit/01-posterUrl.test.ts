@@ -1,7 +1,7 @@
 // __tests__/unit/01-posterUrl.test.ts
 //
-// 📘 MODELO RESOLVIDO — NÃO é entrega. Já vem pronto: leia e use de molde.
-//    (comece por aqui)
+// 📘 MODELO RESOLVIDO — já vem pronto, é o molde (NÃO é entrega).
+//    Leia antes de começar e use de exemplo pros próximos.
 // Função pura: entrada → saída, sem estado, sem rede. O teste mais barato e estável.
 
 import { posterUrl } from '@/utils/poster-url';

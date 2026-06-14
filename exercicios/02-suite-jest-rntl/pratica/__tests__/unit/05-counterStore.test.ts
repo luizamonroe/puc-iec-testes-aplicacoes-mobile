@@ -1,7 +1,8 @@
 // __tests__/unit/05-counterStore.test.ts
 //
-// ✅ AVALIATIVO — Atividade 2 · Parte A (conta nota · entrega 21/06)
-//    No hands-on fazemos a favoritesStore juntos; esta aqui é você sozinho.
+// ✅ AVALIATIVO — o aluno entrega isto (conta nota). Faça TODOS os it() — todos contam.
+//    Marca por it(): 🧑‍🏫 = a gente faz junto em aula · 🧑‍💻 = o aluno faz sozinho.
+//    (esta store inteira é 🧑‍💻 — o aluno faz sozinho, mesmo padrão da favoritesStore)
 //
 // Escreva os testes da counterStore.
 //
@@ -21,21 +22,21 @@ const s = () => useCounterStore.getState();
 // Os 3 são FÁCEIS: a ação já está escrita — complete só o expect (começam vermelhos → verde).
 
 describe('counterStore', () => {
-  it('1. increment soma 1 ao count', () => {
+  it('1. increment soma 1 ao count', () => {   // 🧑‍💻 aluno
     // Act
     s().increment();
     // Assert — complete:
     expect(s().count).toBe(/* TODO */);
   });
 
-  it('2. decrement subtrai 1 do count', () => {
+  it('2. decrement subtrai 1 do count', () => {   // 🧑‍💻 aluno
     // Act
     s().decrement();
     // Assert — complete:
     expect(s().count).toBe(/* TODO */);
   });
 
-  it('3. reset volta o count pra 0', () => {
+  it('3. reset volta o count pra 0', () => {   // 🧑‍💻 aluno
     // Arrange
     s().increment();
     s().increment();

@@ -1,6 +1,6 @@
 // __tests__/unit/06-popularMovies.test.ts
 //
-// ⭐ BÔNUS (+1) — Atividade 2 · Parte A (opcional, pra arredondar a nota)
+// ⭐ BÔNUS — opcional (pontos extras). 🧑‍💻 o aluno faz sozinho.
 //
 // Testar fetchPopularMovies isolando a dependência de rede.
 //
@@ -21,6 +21,6 @@ beforeEach(() => {
 });
 
 describe('fetchPopularMovies', () => {
-  it.todo('1. chama /movie/popular com a page informada');
-  it.todo('2. devolve o data da resposta');
+  it.todo('1. chama /movie/popular com a page informada');   // 🧑‍💻 aluno
+  it.todo('2. devolve o data da resposta');   // 🧑‍💻 aluno
 });

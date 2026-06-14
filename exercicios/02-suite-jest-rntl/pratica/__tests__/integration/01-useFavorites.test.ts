@@ -1,7 +1,8 @@
 // __tests__/integration/01-useFavorites.test.ts
 //
-// 🔵 PRÁTICA — hands-on do Bloco 2 (aquecimento · NÃO conta nota)
-//    Fazemos juntos em aula pra pegar o jeito do renderHook.
+// 🔵 PRÁTICA — NÃO conta nota (aquecimento pra pegar o jeito do renderHook).
+//    Marca por it(): 🧑‍🏫 = a gente faz junto em aula · 🧑‍💻 = o aluno faz sozinho.
+//
 // `renderHook` roda um hook no ambiente React SEM renderizar tela.
 // Aqui o hook é `useFavorites` (fina camada sobre o store de favoritos).
 //
@@ -18,9 +19,9 @@ import { useFavoritesStore } from '@/store/favoritesStore';
 beforeEach(() => useFavoritesStore.setState({ ids: [] }));
 
 describe('useFavorites (renderHook)', () => {
-  it.todo('1. começa sem favoritos (count === 0)');
+  it.todo('1. começa sem favoritos (count === 0)');   // 🧑‍🏫 em aula
 
-  it.todo('2. toggle adiciona e depois remove — count volta a 0');
+  it.todo('2. toggle adiciona e depois remove — count volta a 0');   // 🧑‍💻 aluno
 
-  it.todo('3. isFavorite reflete o estado após add(id)');
+  it.todo('3. isFavorite reflete o estado após add(id)');   // 🧑‍💻 aluno
 });

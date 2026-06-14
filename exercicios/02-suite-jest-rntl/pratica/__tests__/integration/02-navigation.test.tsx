@@ -1,7 +1,8 @@
 // __tests__/integration/02-navigation.test.tsx
 //
-// 🔵 PRÁTICA — hands-on do Bloco 2 (NÃO conta nota)
-//    Integração de navegação — só pra praticar.
+// 🔵 PRÁTICA — NÃO conta nota (aquecimento de integração de navegação).
+//    Marca por it(): 🧑‍🏫 = a gente faz junto em aula · 🧑‍💻 = o aluno faz sozinho.
+//
 // Renderiza o app inteiro (AppNavigator) e verifica que tocar num card
 // leva pra tela de detalhe. Como a lista vem de fetch, a API é mockada.
 //
@@ -47,5 +48,5 @@ beforeEach(() => {
 });
 
 describe('Navegação (integração)', () => {
-  it.todo('1. tap no card de Matrix navega pra tela de detalhe');
+  it.todo('1. tap no card de Matrix navega pra tela de detalhe');   // 🧑‍💻 aluno
 });
