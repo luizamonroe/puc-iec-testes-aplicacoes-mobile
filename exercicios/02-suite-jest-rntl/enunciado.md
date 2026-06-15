@@ -89,7 +89,7 @@ npm run test:coverage
 
 Aqui você testa **fluxo entre componentes** (Bloco 2): a lista busca dados (API mockada via TanStack Query) e favoritar um card reflete no contador do header. O alvo é a versão **já implementada** em `src/integration/` (`MovieListScreen`, `MovieCardFav`, `AppNavigator`) + o hook `src/hooks/useFavorites.ts`. Você só escreve os `it()` — **mock e wrapper já vêm prontos** no scaffold.
 
-> Por que uma versão separada em `src/integration/`? O `MovieList`/`MovieCard` da Parte A são stubs que você completaria implementando features. Pra focar em **teste de integração** (não em implementar app), a Parte B traz as telas prontas e conectadas.
+> Por que uma versão separada em `src/integration/`? São as telas já **montadas e conectadas** (lista + card + navegação + contador no header) e instrumentadas com `testID` pros testes de integração. Todo o app **já vem implementado** — aqui você foca em **testar o fluxo entre as peças**, só escrevendo os `it()`, sem tocar na UI.
 
 **Pontua só a entrega:** `__tests__/integration/03-movieFlow.integration.test.tsx` (3 cenários). Os outros dois arquivos são **prática** (não pontuam), mas faça-os primeiro — são o aquecimento.
 
