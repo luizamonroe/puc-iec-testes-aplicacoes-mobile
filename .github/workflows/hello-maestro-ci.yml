@@ -31,17 +31,13 @@ jobs:
         uses: reactivecircus/android-emulator-runner@v2
         with:
           api-level: 34
-          target: google_apis
+          target: default
           arch: x86_64
           profile: pixel_6
           emulator-options: -no-snapshot-save -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim
           disable-animations: true
           script: |
-            # Instala a calculadora-alvo (Simple Calculator) antes de rodar o flow
-            CALC_URL=$(curl -sL https://api.github.com/repos/SimpleMobileTools/Simple-Calculator/releases/latest \
-              | grep -o 'https://[^"]*\.apk' | head -1)
-            echo "Baixando calculadora: $CALC_URL"
-            curl -sL "$CALC_URL" -o /tmp/calc.apk
+            curl -sL https://github.com/SimpleMobileTools/Simple-Calculator/releases/download/5.12.0/calculator-fdroid-release.apk -o /tmp/calc.apk
             adb install /tmp/calc.apk
             maestro test exercicios/03-hello-maestro/pratica/flows/ --format junit --output results.xml
 
