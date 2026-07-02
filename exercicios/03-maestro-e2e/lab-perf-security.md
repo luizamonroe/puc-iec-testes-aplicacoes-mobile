@@ -191,6 +191,47 @@ Dois achados **reais** (não plantados):
    (não salva/lê arquivo nenhum, não desenha overlay). Viola least privilege — superfície de
    ataque desnecessária.
 
+### Provando o achado 1 — `adb backup` de verdade (Trilha A, todo SO)
+
+Testamos e capturamos de verdade (02/07/2026, emulador Android 15, build debug):
+
+```bash
+adb backup -f cinefav.ab com.puciec.cinefav
+```
+
+**Confirma na tela do device/emulador** — aparece um diálogo "Full backup" com dois botões,
+**"Do not back up"** / **"Back up my data"**. Idêntico em Windows, Linux e Mac (é o `adb`, não
+o SO, que faz isso) — no emulador, clica com o mouse; no celular físico, toca na tela. **Leva uns
+8-10s pra aparecer** — não cancele achando que travou.
+
+**Resultado real:** arquivo `cinefav.ab` de **1.2MB**, sem senha (deixamos o campo em branco).
+
+**Descompactar** (mesmo comando nos 3 sistemas — `.ab` é um header de texto + `zlib` de um
+`tar`, então usamos Python, que todo mundo já tem instalado pelo curso):
+
+```bash
+python3 -c "
+import zlib
+with open('cinefav.ab','rb') as f:
+    for _ in range(4): f.readline()   # pula o header (magic/versão/compactação/criptografia)
+    data = zlib.decompress(f.read())
+with open('cinefav.tar','wb') as out:
+    out.write(data)
+"
+tar -tvf cinefav.tar   # lista o conteúdo
+tar -xf cinefav.tar    # extrai de verdade
+```
+
+No Windows, roda os dois comandos `python3 -c "..."` e `tar` **no PowerShell** — `tar` já vem
+built-in no Windows 10+, não precisa instalar nada.
+
+**O que vem no tar:** `apps/com.puciec.cinefav/sp/*.xml` (SharedPreferences), `.../r/app_webview/`
+(cookies e dados do WebView), o bundle JS do app — o sandbox inteiro, sem root, sem senha.
+
+> **Não quer rodar agora?** Já capturamos um exemplo real pra vocês — baixem
+> [`cinefav-backup-exemplo.ab`](./cinefav-backup-exemplo.ab) e rodem só a parte de descompactar
+> acima, sem precisar de device/emulador.
+
 **Fix:** editar `android/app/src/main/AndroidManifest.xml`:
 ```diff
 - android:allowBackup="true"
