@@ -19,11 +19,19 @@ Isso já é ponto de partida válido — não é obrigatório usar ferramenta no
 
 **Passo 1 — Flashlight (medição de app, cold start/FPS/CPU):**
 ```bash
-npm install -g @flashlight-benchmark/cli   # ver docs.flashlight.dev pro nome exato do pacote
-flashlight measure --duration 10000 --bundleId com.puciec.cinefav
-flashlight test   # automatiza a medição em cenário de teste
+# instalação oficial (não é npm — script próprio, ver docs.flashlight.dev/getting-started/):
+curl https://get.flashlight.dev | bash          # macOS/Linux
+# iwr https://get.flashlight.dev/windows -useb | iex   # Windows
+
+# device/emulador Android conectado + app aberto, depois:
+flashlight measure
+flashlight test --bundleId com.puciec.cinefav --testCommand "adb shell am start com.puciec.cinefav/.MainActivity" --duration 15000
 ```
-Roda sobre ADB, sem módulo Gradle separado, sem device rooteado.
+Roda sobre ADB, sem módulo Gradle separado, sem device rooteado. **Atenção:** Flashlight mede via
+ADB — é ferramenta **Android**; não achamos suporte iOS documentado. Se o grupo quiser cobrir iOS
+também, usar a técnica do Passo 0 (`xcrun simctl`/Instruments) como complemento, não substituto.
+Guias oficiais RN: [docs.flashlight.dev/guides/react-native](https://docs.flashlight.dev/guides/react-native/react-native-eu/)
+e [JS FPS](https://docs.flashlight.dev/guides/react-native/js-fps/).
 
 **Passo 2 — Reassure (regressão de performance de componente, integra com o que já sabem):**
 ```bash
@@ -45,6 +53,7 @@ de lista) — meça, otimize, meça de novo, mostre o número mudando.
 
 ## Fontes
 
+- [Flashlight — docs oficiais](https://docs.flashlight.dev) (setup, guias RN, referência de comandos)
 - [Flashlight — GitHub (BAM)](https://github.com/bamlab/flashlight)
 - [How to measure React Native performance with Flashlight](https://www.theodo.com/blog/measuring-react-native-performance-with-flashlight)
 - [Reassure — Callstack](https://github.com/callstack/reassure)

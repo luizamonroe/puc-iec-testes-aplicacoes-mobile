@@ -122,6 +122,45 @@ plantado. Nem todo achado de QA tem correção de 1 linha; às vezes o valor é 
 (esses números de hoje) pra virar alarme se um PR futuro piorar. É um músculo de QA diferente do
 da seção 2 (achar-e-corrigir na hora): aqui é achar-e-vigiar.
 
+### Bônus — sentir uma regressão de verdade (Trilha A, opcional)
+
+O app não tem gargalo real pra "consertar" — mas dá pra **sentir o que uma regressão de
+performance parece** de forma controlada e reversível, com número real medido (não estimado).
+
+> **Isso é uma demo sintética/didática — não é um achado real como o `allowBackup` da seção 2.**
+> Deixamos bem marcado no código (comentário `PERF-DEMO`) pra não confundir os dois.
+
+```bash
+node scripts/toggle-perf-regression.js status   # confirma que está "normal" antes de começar
+node scripts/toggle-perf-regression.js          # liga um delay de 1500ms no boot do app
+cd android && ./gradlew assembleDebug && cd ..
+adb install -r android/app/build/outputs/apk/debug/app-debug.apk
+adb shell am force-stop com.puciec.cinefav
+adb shell am start -W com.puciec.cinefav/.MainActivity
+```
+
+**Resultado real** (testamos agora, 2x seguidas, mesmo emulador):
+
+| | Baseline (sem regressão, build debug) | Com regressão (+1500ms artificial) |
+|---|---|---|
+| Cold start | 4808 – 6033ms | **10477 – 19643ms** |
+
+**Como ler — o achado mais interessante não é o número, é o formato:** a regressão adicionou
+"só" 1500ms de `Thread.sleep`, mas o `TotalTime` subiu **muito mais que 1500ms** — não é soma
+linear. Bloquear a **main thread** no boot atrasa tudo que depende dela em cascata (inicialização
+de outros módulos, desenho da primeira tela) — o custo real de travar a thread errada é maior
+que o tempo travado em si. É por isso que "não bloquear a main thread" é regra de ouro de
+performance mobile, não só recomendação teórica.
+
+**Reverter depois:**
+```bash
+node scripts/toggle-perf-regression.js          # roda nucleo mesmo comando, desliga se já tá ligado
+cd android && ./gradlew assembleDebug && cd ..
+adb install -r android/app/build/outputs/apk/debug/app-debug.apk
+```
+Confira com `git diff android/app/src/main/java/com/puciec/cinefav/MainApplication.kt` que
+voltou limpo (sem diferença) antes de dar o app por encerrado.
+
 ## 2. Security — achado real no manifest (Trilha A e B)
 
 > **Por que importa:** com o device na mão (sem senha, sem root), dá pra extrair os dados do app
