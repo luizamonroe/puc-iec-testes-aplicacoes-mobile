@@ -5,10 +5,10 @@
 
 ## Duas trilhas — roda em paralelo com o plantão de setup
 
-Enquanto o prof ajuda quem ainda está travado no Android Studio/emulador, quem **já** tem
+Enquanto o prof ajuda quem ainda está ajustando o Android Studio/emulador, quem **já** tem
 device/emulador funcionando faz este lab **sozinho e self-guided** (é copiar-colar + ler o
-resultado — o prof não está livre pra demonstrar ao vivo nesse momento, circula quando sobra
-tempo do plantão). Quem **ainda não** tem device faz a **Trilha B**.
+resultado — o prof circula quando sobra tempo do plantão). Quem **ainda não** tem device
+funcionando faz a **Trilha B**.
 
 - **Trilha A — com device/emulador rodando:** seções 1–3 completas (mede cold start/jank, acha
   + corrige + rebuilda + reinstala + reverifica o achado de segurança).
