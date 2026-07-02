@@ -12,9 +12,9 @@ funcionando faz a **Trilha B**.
 
 - **Trilha A — com device/emulador rodando:** seções 1–3 completas (mede cold start/jank, acha
   + corrige + rebuilda + reinstala + reverifica o achado de segurança).
-- **Trilha B — sem device ainda:** só a seção 2 (achar no manifest — sem `adb`, é ler/editar
-  arquivo). Rebuild (seção 2) dá pra fazer mesmo sem emulador se o SDK já estiver instalado
-  (não precisa instalar/reverificar até ter um device).
+- **Trilha B — sem device ainda:** achar + editar o manifest (sem `adb`, é ler/editar arquivo) +
+  **provar o achado no binário já instalado** (`aapt dump`, sem precisar buildar nada — ver seção
+  2). Rebuild completo fica pra quando tiver device — builda sem poder verificar não vale a pena.
 
 Ao reconvergir (depois do plantão), **5min de compartilhar achados** em vez de demo do zero —
 a maioria já fez sozinho.
@@ -74,20 +74,40 @@ Dois achados **reais** (não plantados — são o app de verdade):
 ```
 Remover as 3 permissões não usadas do topo do arquivo.
 
-**Rebuild** (Trilha A e B — só precisa do SDK, não de emulador):
+### Trilha B — provar o achado sem buildar nada
+
+Vocês já têm o `CineFav.apk` baixado (usaram pra instalar via `adb install`, no COMECE-AQUI —
+ajuste o caminho abaixo pra onde salvaram o arquivo, ex. `~/Downloads/CineFav.apk`). Dá pra
+provar o achado **no binário de verdade, real, distribuído** — sem SDK de projeto, sem
+`npm install`, sem device:
+```bash
+aapt dump xmltree CineFav.apk AndroidManifest.xml | grep -i backup
+```
+`aapt` vem com o Android SDK build-tools (mesmo pacote do emulador, já instalado). Isso mostra que
+o achado não é só teoria de código-fonte — está no binário que qualquer pessoa baixaria. Fixar e
+reverificar em build novo fica pra quando tiver device (Trilha A) — builda sem poder instalar não
+prova nada.
+
+### Trilha A — rebuild, reinstalar, reverificar
+
+> **Antes de buildar:** se vocês instalaram o CineFav via APK pronto (fluxo padrão do
+> COMECE-AQUI), **nunca rodaram `npm install` nessa pasta** — o rebuild vai falhar sem isso
+> (`Included build '.../android/null' does not exist`). Rodem primeiro:
+> ```bash
+> npm install
+> ```
+> **Isso é pesado — reservem tempo e espaço em disco.** Testamos: ~5min no primeiro build, e o
+> Gradle cria vários GB de artefato (múltiplas arquiteturas nativas). Se o disco estiver quase
+> cheio, o build falha com "No space left on device" no meio — confiram espaço livre antes.
+
 ```bash
 cd android && ./gradlew assembleDebug
-```
-
-**Reinstalar + reverificar** (só Trilha A — precisa de device):
-```bash
 adb install -r app/build/outputs/apk/debug/app-debug.apk
 cat app/src/main/AndroidManifest.xml | grep allowBackup   # confirma na fonte
+aapt dump xmltree app/build/outputs/apk/debug/app-debug.apk AndroidManifest.xml | grep -i backup
 ```
-
-> **Se sobrar tempo/curiosidade:** `aapt dump xmltree app-debug.apk AndroidManifest.xml | grep -i backup`
-> mostra o manifest **compilado** de dentro do APK (prova que o fix foi pro binário, não só a fonte).
-> `aapt` vem com o Android SDK build-tools (já instalado — mesmo pacote do emulador).
+O `aapt dump` no APK **recém-buildado** prova que o fix foi pro binário, não só a fonte — mesmo
+comando da Trilha B, mas comparando antes (CineFav.apk original) vs depois (app-debug.apk com fix).
 
 ## Por que isso substitui a "Aula 5" original
 

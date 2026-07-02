@@ -30,6 +30,18 @@ cobrindo esse tema — a peça que fecha a disciplina, aplicando a pirâmide de 
 > grupo no meio do projeto (ex.: tema 9 precisa de API real ativada, não roda no mock padrão). **Cada
 > tema agora tem uma pasta própria em `temas/NN-slug/README.md`** com dica de execução passo a passo.
 
+## ⚠️ Pré-requisito: device/emulador funcionando
+
+**9 dos 12 temas precisam de device ou emulador Android rodando** em algum momento (temas 1, 3, 5,
+6, 7, 10, 12 — precisam pra rodar de verdade; temas 4 e 8 só em parte). Se o setup da Atividade 3
+(`exercicios/03-maestro-e2e/COMECE-AQUI.md`) parou de funcionar (trocou de máquina, deletou o
+emulador, etc.), **resolvam isso antes de escolher o tema** — não deixe pra descobrir no meio do
+prazo. Rodem `bash setup-maestro-check.sh` (raiz do repo) pra confirmar que tudo ainda funciona.
+
+**Sem device confiável?** 3 temas rodam 100% em código/API, sem precisar abrir emulador nenhuma
+vez: **tema 2** (Robot Pattern sobre RNTL — Jest puro), **tema 9** (Contract Testing — Jest+Pact),
+**tema 11** (Mutation Testing — Stryker+Jest). São opção segura pra quem não tem acesso garantido
+a device/emulador pelas próximas 2 semanas.
 ## Temas disponíveis
 
 Organizados por **trilha de skill** — escolha pelo que seu grupo curte, não só pelo que parece "mais IA".
